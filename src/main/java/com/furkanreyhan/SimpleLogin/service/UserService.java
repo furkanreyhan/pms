@@ -27,7 +27,7 @@ public class UserService {
     }
 
     public boolean authenticateUser(UserLogin userLogin) {
-        Optional<User> userOptional = userRepository.findByUsername(userLogin.getUsername());
+        Optional<User> userOptional = userRepository.findByUsername(userLogin.username());
         User user;
         if (userOptional.isPresent()){
             user = userOptional.get();
@@ -39,7 +39,7 @@ public class UserService {
         }
     }
     public boolean validatePassword(User user,UserLogin userLogin){
-        if( user.getPassword() != userLogin.getPassword().hashCode()) {
+        if( user.getPassword() != userLogin.password().hashCode()) {
             System.out.println("Sifre yanlis");
             throw new UnauthorizedException("Sifre yanlis");
         }

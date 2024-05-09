@@ -16,8 +16,8 @@ public class UserMapper {
     }
 
     public static User mapToUser(User user,UserLogin userLogin){
-        user.setUsername(userLogin.getUsername());
-        user.setPassword(userLogin.getPassword().hashCode());
+        user.setUsername(userLogin.username());
+        user.setPassword(userLogin.password().hashCode());
 
         return user;
     }
